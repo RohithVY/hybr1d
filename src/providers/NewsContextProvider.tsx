@@ -1,11 +1,18 @@
+"use client";
+
 import React, { createContext, useState } from "react";
+import { NEWS_URL } from "@/miscellaneous/constants";
+import { useQuery } from "@tanstack/react-query";
 
 type Props = {
   children: React.ReactNode;
 };
 
 type NewsContextType = {
-  newsList: Post | null;
+  searchText: string;
+  handleSearchInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  queryData: any;
 };
 
 export const NewsContext = createContext<NewsContextType | undefined>(
@@ -13,10 +20,32 @@ export const NewsContext = createContext<NewsContextType | undefined>(
 );
 
 const NewsContextProvider = ({ children }: Props) => {
-  const [newsList, setNewsList] = useState<Post | null>(null);
+  const [searchText, setSearchText] = useState<string>("");
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+  };
+
+  const queryData = useQuery({
+    queryKey: ["news"],
+    queryFn: () =>
+      fetch(`${NEWS_URL}/search?query=${searchText}`).then((res) => res.json()),
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    searchText && (await queryData.refetch());
+    console.groupCollapsed("query");
+    console.log("first");
+    console.log(queryData.data.hits);
+    console.groupEnd();
+  };
 
   const contextValue = {
-    newsList,
+    handleSearchInputChange,
+    searchText,
+    handleSubmit,
+    queryData,
   };
 
   return (

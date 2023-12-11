@@ -20,7 +20,9 @@ export default function RootLayout({
     <html lang="en" data-theme="night">
       <body className={inter.className}>
         <TanstackProvider>
-          <NewsContextProvider>{children}</NewsContextProvider>
+          <NewsContextProvider>
+            <div className="w-full min-h-screen min-w-[100vw]">{children}</div>
+          </NewsContextProvider>
         </TanstackProvider>
       </body>
     </html>
