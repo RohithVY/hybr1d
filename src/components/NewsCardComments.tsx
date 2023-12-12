@@ -20,7 +20,7 @@ const NewsCardComments = ({ comments }: Props) => {
     });
   };
   return (
-    <div className="flex flex-col ml-4 gap-2">
+    <div className="flex flex-col ml-4 gap-2 shadow-sm shadow-[#262f42]">
       {visibleComments.length > 0 &&
         visibleComments.map((eachComment: NewsCommentsType, index: number) => {
           return (
@@ -30,7 +30,7 @@ const NewsCardComments = ({ comments }: Props) => {
                 <Markdown
                   options={{ forceBlock: true }}
                   key={eachComment.id + eachComment.created_at}
-                  className="flex flex-col gap-2 text-sm break-words text-[#acadb0] px-4 py-2 "
+                  className="flex flex-col gap-2 text-sm break-all text-[#acadb0] px-4 py-2 "
                 >
                   {eachComment.text}
                 </Markdown>

@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  word-break: break-all;
+}

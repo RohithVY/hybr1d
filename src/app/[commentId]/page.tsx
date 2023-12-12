@@ -30,8 +30,8 @@ const Comments = ({ params: { commentId } }: Props) => {
   const postDate = new Date(data.created_at);
   const distance = formatDistanceStrict(postDate, today);
   return (
-    <>
-      <section className="flex flex-col py-4 px-4 max-w-95vw justify-center items-center bg-[rgb(18,28,59)]">
+    <div className="pr-4">
+      <section className="flex ml-4 mt-4 rounded-md flex-col py-4 px-4 max-w-95vw justify-center items-center bg-[rgb(18,28,59)] sticky top-0">
         <Link
           className="rounded-full text-bg-secondary px-4 py-2 border-bg-secondary border-[2px] opacity-30 hover:opacity-100 cursor-pointer mr-auto mb-4 flex items-center gap-4"
           href={"/"}
@@ -91,7 +91,7 @@ const Comments = ({ params: { commentId } }: Props) => {
         </div>
       </section>
       <NewsCardComments comments={data.children} />
-    </>
+    </div>
   );
 };
 
