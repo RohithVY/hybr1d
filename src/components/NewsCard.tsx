@@ -1,5 +1,6 @@
 import React from "react";
 import { formatDistanceStrict } from "date-fns";
+import Link from "next/link";
 
 type NewsCardProps = {
   post: Post;
@@ -12,7 +13,10 @@ const NewsCard = ({ post }: NewsCardProps) => {
   const showNewBadge = postDate >= prevThreeDays;
   const distance = formatDistanceStrict(postDate, today);
   return (
-    <div className="relative card w-96 bg-[rgb(14,25,57)] rounded-lg mt-4 bg-gradient-to-r from-[rgba(2,0,36,1)] to-[] cursor-pointer border-[rgb(15,23,42)] border-[2px] hover:border-spacing-1 hover:border-secondary shadow-secondary shadow-sm">
+    <Link
+      className="relative card w-96 bg-[rgb(14,25,57)] rounded-lg mt-4 bg-gradient-to-r from-[rgba(2,0,36,1)] to-[] cursor-pointer border-[rgb(15,23,42)] border-[2px] hover:border-spacing-1 hover:border-secondary shadow-secondary shadow-sm"
+      href={`/${post.objectID}`}
+    >
       <div className="card-body justify-around">
         <h2 className="card-title">
           {post.title || "New Post"}
@@ -48,9 +52,11 @@ const NewsCard = ({ post }: NewsCardProps) => {
                 );
             })}
         </div>
-        <span className="text-xs text-slate-500">{distance && distance} ago</span>
+        <span className="text-xs text-slate-500">
+          {distance && `${distance} ago`}
+        </span>
       </div>
-    </div>
+    </Link>
   );
 };
 
