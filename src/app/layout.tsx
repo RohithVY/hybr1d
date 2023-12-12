@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <TanstackProvider>
           <NewsContextProvider>
-            <div className="w-full min-h-screen min-w-[100vw]">{children}</div>
+            <div className="w-full min-h-screen min-w-[90vw]">{children}</div>
           </NewsContextProvider>
         </TanstackProvider>
       </body>

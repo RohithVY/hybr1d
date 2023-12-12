@@ -1,5 +1,5 @@
 type Post = {
-  id: number;
+  objectID: string;
   created_at: string;
   author: string;
   title?: string;
@@ -7,5 +7,8 @@ type Post = {
   text: string | null;
   points?: number;
   parent_id: number | null;
-  children: Post[];
+  updated_at: string;
+  num_comments: number;
+  _tags: string[];
+  children: number[];
 };

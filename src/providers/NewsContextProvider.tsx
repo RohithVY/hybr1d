@@ -21,7 +21,7 @@ export const NewsContext = createContext<NewsContextType | undefined>(
 
 const NewsContextProvider = ({ children }: Props) => {
   const [searchText, setSearchText] = useState<string>("");
-
+  
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
@@ -35,10 +35,6 @@ const NewsContextProvider = ({ children }: Props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     searchText && (await queryData.refetch());
-    console.groupCollapsed("query");
-    console.log("first");
-    console.log(queryData.data.hits);
-    console.groupEnd();
   };
 
   const contextValue = {
