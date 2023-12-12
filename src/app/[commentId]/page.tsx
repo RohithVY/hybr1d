@@ -51,7 +51,7 @@ const Comments = ({ params: { commentId } }: Props) => {
         </Link>
         <Link
           className="w-full flex gap-4 items-center text-xl ml-7"
-          href={data.url}
+          href={data.url ? data.url : `https://www.google.com/`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
