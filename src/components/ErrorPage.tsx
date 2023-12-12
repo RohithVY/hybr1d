@@ -2,7 +2,7 @@ import React from "react";
 
 export const ErrorPage = () => {
   return (
-    <div className="grid pt-40 px-4 bg-white place-content-center dark:bg-gray-900">
+    <div className="grid pt-40 px-4 place-content-center bg-transparent">
       <div className="text-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
