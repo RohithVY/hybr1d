@@ -21,3 +21,9 @@ This is a NextJS-based news app that lays out the most recent news from the hac
 ## Usage
 
 The dashboard can be accessed by navigating to <code>http://localhost:3000/</code> in your web browser.
+
+## Screenshots
+
+![image](https://github.com/RohithVY/hybr1d/assets/110025038/21061d5e-65fa-4770-979d-10a3b23b9f95)
+
+![image](https://github.com/RohithVY/hybr1d/assets/110025038/2f805409-66c6-4196-b00d-fcab9a72eacf)
