@@ -1,6 +1,7 @@
 "use client";
 
 import { ErrorPage } from "@/components/ErrorPage";
+import { LoadingPage } from "@/components/LoadingPage";
 import NewsCardComments from "@/components/NewsCardComments";
 import { NEWS_URL } from "@/miscellaneous/constants";
 import { useQuery } from "@tanstack/react-query";
@@ -22,7 +23,7 @@ const Comments = ({ params: { commentId } }: Props) => {
       fetch(`${NEWS_URL}/items/${commentId}`).then((res) => res.json()),
   });
 
-  if (isLoading) return <h3>Loading...</h3>;
+  if (isLoading) return <LoadingPage />;
   if (isError) return <ErrorPage />;
 
   const today = new Date();
@@ -48,7 +49,10 @@ const Comments = ({ params: { commentId } }: Props) => {
           </svg>
           <p> Home</p>
         </Link>
-        <h2 className="w-full flex gap-4 items-center text-xl ml-7">
+        <Link
+          className="w-full flex gap-4 items-center text-xl ml-7"
+          href={data.url}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="20"
@@ -60,11 +64,11 @@ const Comments = ({ params: { commentId } }: Props) => {
               fill="currentColor"
             />
           </svg>{" "}
-          {data.title}
+          <p className="hover:underline">{data.title}</p>
           <span className="ml-auto mr-6 text-xs text-[#818df887] py-2 px-4 border-[#818df887] border-2 rounded-full">
             {distance && `${distance} ago`}
           </span>
-        </h2>
+        </Link>
         <div className="flex justify-between w-full ml-4 mt-5 items-center text-[#0F172A]">
           {data.points && (
             <span className="flex gap-4 items-center bg-secondary px-4 py-2 rounded-full">
@@ -85,7 +89,7 @@ const Comments = ({ params: { commentId } }: Props) => {
           <span></span>
         </div>
       </section>
-      <NewsCardComments comments={data.children}/>
+      <NewsCardComments comments={data.children} />
     </>
   );
 };
