@@ -65,7 +65,9 @@ const Comments = ({ params: { commentId } }: Props) => {
               fill="currentColor"
             />
           </svg>{" "}
-          <p className="hover:underline">{data.title}</p>
+          <p className="hover:underline">
+            {data.title ? data.title : `Title for conversation`}
+          </p>
           <span className="ml-auto mr-6 text-xs text-[#818df887] py-2 px-4 border-[#818df887] border-2 rounded-full">
             {distance && `${distance} ago`}
           </span>
@@ -90,7 +92,13 @@ const Comments = ({ params: { commentId } }: Props) => {
           <span></span>
         </div>
       </section>
-      <NewsCardComments comments={data.children} />
+      {data.children.length ? (
+        <NewsCardComments comments={data.children} />
+      ) : (
+        <p className="w-full mt-10 flex justify-center items-center text-lg opacity-60 font-semibold">
+          Oops! No conversation can be found here
+        </p>
+      )}
     </div>
   );
 };
