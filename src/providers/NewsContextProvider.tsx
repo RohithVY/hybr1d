@@ -29,7 +29,7 @@ const NewsContextProvider = ({ children }: Props) => {
   };
 
   const queryData = useQuery({
-    queryKey: ["news", searchText, currentPage],
+    queryKey: ["news", currentPage],
     queryFn: () =>
       fetch(`${NEWS_URL}/search?query=${searchText}&page=${currentPage}`).then(
         (res) => res.json()
